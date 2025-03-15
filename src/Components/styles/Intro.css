@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+.intro-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: #080B10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: bg-reveal 2s 10s ease-in-out forwards; /* BG reveal starts last */
+}
+
+/* Logo Circle */
+.glowing-circle {
+  width: 200px;
+  height: 200px;
+  border: 2px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0 0 20px white;
+  animation: fade-in 2s ease-in-out, fade-out-circle 1s 4s ease-in-out forwards;
+}
+
+/* Glowing Letter F */
+.glowing-letter {
+  font-size: 88px;
+  color: white;
+  font-family: "Caveat", cursive;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  animation: move-top-left 2s 5s ease-in-out forwards;
+}
+
+/* 🔹 Fade-in Animation */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 🔹 Border Fade-out (but F stays) */
+@keyframes fade-out-circle {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    box-shadow: none;
+    border: none;
+  }
+}
+
+/* 🔹 Move F to Top-Left */
+@keyframes move-top-left {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-660px, -290px);
+    font-size: 30px;
+  }
+}
+
+/* 🔹 Background Reveal (after everything) */
+@keyframes bg-reveal {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+/* Hide intro after animation */
+.hide {
+  display: none;
+}
