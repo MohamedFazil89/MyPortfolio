@@ -19,6 +19,7 @@ function App() {
   
           <NavBar />
           <HomePage />
+
           <Service />
 
           

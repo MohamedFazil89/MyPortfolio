@@ -9,7 +9,6 @@
     cursor: pointer;
     background: linear-gradient(90deg, pink, purple);
     background-clip: text;
-    font-size: 10rem;
   }
   
   .glitch::after,

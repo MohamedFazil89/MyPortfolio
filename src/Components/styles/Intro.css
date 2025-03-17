@@ -1,40 +1,49 @@
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
+:root {
+  --primary-bg: #080B10;
+  --circle-border: white;
+  --circle-shadow: 0 0 20px white;
+  --glow-color: white;
+}
+
+/* Intro Container */
 .intro-container {
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background-color: #080B10;
+  background-color: var(--primary-bg);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  animation: bg-reveal 2s 10s ease-in-out forwards; /* BG reveal starts last */
+  /* Background reveal animation starts after intro finishes */
+  animation: bg-reveal 2s 10s ease-in-out forwards;
 }
 
 /* Logo Circle */
 .glowing-circle {
   width: 200px;
   height: 200px;
-  border: 2px solid white;
+  border: 2px solid var(--circle-border);
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  box-shadow: 0 0 20px white;
+  box-shadow: var(--circle-shadow);
   animation: fade-in 2s ease-in-out, fade-out-circle 1s 4s ease-in-out forwards;
 }
 
 /* Glowing Letter F */
 .glowing-letter {
   font-size: 88px;
-  color: white;
+  color: var(--glow-color);
   font-family: "Caveat", cursive;
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
   animation: move-top-left 2s 5s ease-in-out forwards;
 }
 
-/* 🔹 Fade-in Animation */
+/* Keyframes */
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -46,7 +55,6 @@
   }
 }
 
-/* 🔹 Border Fade-out (but F stays) */
 @keyframes fade-out-circle {
   0% {
     opacity: 1;
@@ -58,10 +66,10 @@
   }
 }
 
-/* 🔹 Move F to Top-Left */
 @keyframes move-top-left {
   0% {
     transform: translate(0, 0);
+    font-size: 88px;
   }
   100% {
     transform: translate(-660px, -290px);
@@ -69,7 +77,6 @@
   }
 }
 
-/* 🔹 Background Reveal (after everything) */
 @keyframes bg-reveal {
   0% {
     transform: translateY(0);
@@ -82,4 +89,55 @@
 /* Hide intro after animation */
 .hide {
   display: none;
+}
+
+/* Responsive Adjustments */
+
+/* Tablets (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .glowing-circle {
+    width: 150px;
+    height: 150px;
+    box-shadow: 0 0 15px white;
+  }
+  .glowing-letter {
+    font-size: 60px;
+  }
+  /* Adjust the move animation for tablets */
+  @keyframes move-top-left {
+    0% {
+      transform: translate(0, 0);
+      font-size: 60px;
+    }
+    100% {
+      transform: translate(-400px, -200px);
+      font-size: 24px;
+    }
+  }
+}
+
+/* Mobile Devices (max-width: 600px) */
+@media (max-width: 600px) {
+  .intro-container {
+    padding: 1rem;
+  }
+  .glowing-circle {
+    width: 120px;
+    height: 120px;
+    box-shadow: 0 0 10px white;
+  }
+  .glowing-letter {
+    font-size: 40px;
+  }
+  /* Adjust the move animation for mobile */
+  @keyframes move-top-left {
+    0% {
+      transform: translate(0, 0);
+      font-size: 40px;
+    }
+    100% {
+      transform: translate(-250px, -250px);
+      font-size: 20px;
+    }
+  }
 }
